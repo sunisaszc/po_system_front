@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,RequestOptions ,Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
+
 
 import { LocalStorageService } from 'ngx-webstorage';
 
@@ -9,6 +10,9 @@ export class LoginService {
 
   private isUserLoggedIn;
   private username
+  headers: Headers;
+  options: RequestOptions;
+  
 
   constructor(private http: Http, private localSt: LocalStorageService) {
     const user = this.localSt.retrieve('login');
@@ -42,4 +46,10 @@ export class LoginService {
       .map((res) => res.json());
   }
 
+
+  googleOAuth(){
+    
+    return this.http.get("http://localhost:3000/oauth/google")
+    .map((res) => res.json());
+  }
 }

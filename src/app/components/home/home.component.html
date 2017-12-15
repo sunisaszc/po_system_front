@@ -44,43 +44,18 @@
   <hr/>
   <h1 class="jumbotron-heading text-center">Our Products</h1>
   <hr/>
-  <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
-      <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
-      <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod
-        semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet
-        risus.
-      </p>
-      <p>
-        <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-      </p>
+  <div class="row itemsBlock">
+    <div *ngFor="let product of productList;" class="col-sm-4 col-sm-4 col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{{product.picturePath}}" alt="{{product.productName}}" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">{{product.productName}}</h4>
+          <p class="card-text">{{product.productDetail}}</p>
+          <a href="#" class="btn btn-primary">More Details</a>
+        </div>
+      </div>
     </div>
   </div>
-
   <hr>
 
 </div>

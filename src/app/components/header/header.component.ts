@@ -36,12 +36,25 @@ export class HeaderComponent implements OnInit {
         this.localSt.store('login', response);
         this.router.navigate(['/']);
         document.getElementById("myLogin").click();
-      } else if(response.status =="500") {
+      } else {
         this.result_text = "incorrect username or password!";
         console.log("Failed");
       }
     })
     return false;
+  }
+
+  loginOAuth() {
+    console.log("click");
+    this.loginService.googleOAuth().subscribe((response)=>{
+      if (response != null) {
+        this.loginService.setUserLoggedIn();
+        console.log("Logging in ...");
+        this.localSt.store('login', response);
+        this.router.navigate(['/']);
+        document.getElementById("myLogin").click();
+      }
+    })
   }
 
   logOut() {

@@ -16,6 +16,7 @@ import { LoginService } from './services/login.service'
 import { AuthguardGuard } from './authguard.guard'
 import { UserManagementService } from './services/user-management.service';
 import { UserManagementComponent } from './components/user-management/user-management.component'
+import { ProductService } from './services/product.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
   providers: [
     LoginService,
     AuthguardGuard,
-    UserManagementService
+    UserManagementService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
