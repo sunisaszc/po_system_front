@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: hsl(12, 100%, 60%);">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="../home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="#">Product</a>
+    </li>
+    <li class="nav-item" *ngIf="this.loginService.getUserLoggedIn() == true">
+      <a class="nav-link text-white" routerLink="../user-management">Management</a>
+    </li>
+  </ul>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="this.loginService.getUserLoggedIn() == false">
+        <a class="nav-link text-white" routerLink="../home" data-toggle="modal" data-target="#myLogin">Log in</a>
+      </li>
+      <li class="nav-item" *ngIf="this.loginService.getUserLoggedIn() == false">
+        <a class="nav-link text-white" routerLink="../home">Sign Up</a>
+      </li>
+      <li class="nav-item" *ngIf="this.loginService.getUserLoggedIn() == true">
+        <a class="nav-link text-white" routerLink="#">{{name}}</a>
+      </li>
+      <li class="nav-item" *ngIf="this.loginService.getUserLoggedIn() == true">
+        <a class="nav-link text-white" routerLink="../" (click)='logOut()'>Log Out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- The Modal -->
+<div class="modal fade" id="myLogin">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Please sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <form role="form" (submit)="login(username.value,password.value)">
+
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Enter Username" #username required autofocus>
+                </div>
+
+                <div class="divider-form"></div>
+
+                <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password" #password>
+                </div>
+                {{result_text}}
+                <div class="divider-form"></div>
+
+                <button type="submit" class="btn-block btn btn-lg btn-primary">Log in</button>
+
+                <div class="input-group">
+                  <span class="input-group-addon addon-facebook">
+                    <i class="fa fa-fw fa-2x fa-facebook fa-fw"></i>
+                  </span>
+                  <a class="btn btn-lg btn-block btn-facebook" href="#"> Log in with Facebook</a>
+                </div>
+
+                <div class="input-group">
+                  <span class="input-group-addon addon-google">
+                    <i class="fa fa-fw fa-2x fa-google fa-fw"></i>
+                  </span>
+                  <a class="btn btn-lg btn-block btn-google " href="#"> Log in with Google</a>
+                </div>
+                <p class="text-center">Don't have an account?
+                  <a href="#">Sign up here</a>
+                </p>
+              </form>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
